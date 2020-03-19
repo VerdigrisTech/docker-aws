@@ -1,5 +1,5 @@
 FROM alpine:3.11
 
-ADD aws /tmp/aws
+COPY aws/ /tmp/aws/
 WORKDIR /tmp
 RUN ./aws/install
