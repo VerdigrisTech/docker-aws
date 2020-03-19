@@ -20,6 +20,9 @@ jobs:
           name: Download AWS CLI signature file
           command: curl -o awscliv2.sig https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig
       - run:
+          name: Verify AWS CLI signature
+          command: gpg --verify awscliv2.sig awscliv2.zip
+      - run:
           name: Build Docker image
           command: docker build -t verdigristech/aws .
       # - run:
