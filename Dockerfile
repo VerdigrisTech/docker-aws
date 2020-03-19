@@ -1,4 +1,4 @@
-FROM busybox:1.31-glibc
+FROM debian:stable-slim
 
 COPY aws/ /tmp/aws/
 WORKDIR /tmp
