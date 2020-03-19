@@ -14,8 +14,11 @@ jobs:
           name: Download AWS CLI v2
           command: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       - run:
-          name: Install GNU PG and add AWS PGP public key
+          name: Install GNU PG and import AWS PGP public key
           command: apk update && apk add gnupg && gpg --import awspgp.pub
+      - run:
+          name: Download AWS CLI signature file
+          command: curl -o awscliv2.sig https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig
       - run:
           name: Build Docker image
           command: docker build -t verdigristech/aws .
