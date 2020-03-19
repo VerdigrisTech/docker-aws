@@ -1,3 +1,5 @@
-FROM python:2.7-alpine3.7
+FROM alpine:3.11
 
-RUN pip install awscli
+ADD aws /tmp/aws
+WORKDIR /tmp/aws
+RUN ./install
