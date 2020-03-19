@@ -23,6 +23,9 @@ jobs:
           name: Verify AWS CLI signature
           command: gpg --verify awscliv2.sig awscliv2.zip
       - run:
+          name: Unzip AWS CLI distribution archive
+          command: unzip awscliv2.zip
+      - run:
           name: Build Docker image
           command: docker build -t verdigristech/aws .
       # - run:
