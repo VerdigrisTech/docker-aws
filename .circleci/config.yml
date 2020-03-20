@@ -12,7 +12,7 @@ jobs:
           command: echo "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - run:
           name: Build Docker image
-          command: docker build -t verdigristech/aws .
+          command: docker build -t verdigristech/aws:${CIRCLE_TAG:-edge} .
       - run:
           name: Deploy container
           command: docker push verdigristech/aws
@@ -26,5 +26,3 @@ workflows:
           filters:
             tags:
               only: /v\d+(\.\d+)*/
-            branches:
-              ignore: /.*/
