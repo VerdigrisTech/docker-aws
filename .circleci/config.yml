@@ -11,21 +11,6 @@ jobs:
           name: Login to Docker Cloud
           command: echo "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - run:
-          name: Download AWS CLI v2
-          command: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-      - run:
-          name: Install GNU PG and import AWS PGP public key
-          command: apk update && apk add gnupg && gpg --import awspgp.pub
-      - run:
-          name: Download AWS CLI signature file
-          command: curl -o awscliv2.sig https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig
-      - run:
-          name: Verify AWS CLI signature
-          command: gpg --verify awscliv2.sig awscliv2.zip
-      - run:
-          name: Unzip AWS CLI distribution archive
-          command: unzip awscliv2.zip
-      - run:
           name: Build Docker image
           command: docker build -t verdigristech/aws .
       # - run:
