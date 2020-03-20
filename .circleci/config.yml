@@ -15,7 +15,7 @@ jobs:
           command: docker build -t verdigristech/aws:${CIRCLE_TAG:-edge} .
       - run:
           name: Deploy container
-          command: docker push verdigristech/aws
+          command: docker push verdigristech/aws:${CIRCLE_TAG:-edge}
 
 workflows:
   version: 2
