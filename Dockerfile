@@ -18,3 +18,5 @@ RUN sed -i'' -e '/^path-exclude \/usr\/share\/groff\/\*/d' /etc/dpkg/dpkg.cfg.d/
   && apt-get --purge -y autoremove gnupg curl unzip \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
+
+ENTRYPOINT ["aws"]
