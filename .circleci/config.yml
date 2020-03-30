@@ -15,11 +15,13 @@ jobs:
           command: |
             export VERSION=${CIRCLE_TAG:1}
             docker build -t verdigristech/aws:${VERSION:-edge} .
+            [ -n "${CIRCLE_TAG}"] && docker tag verdigristech/aws:${VERSION} verdigristech/aws:latest
       - run:
           name: Deploy container
           command: |
             export VERSION=${CIRCLE_TAG:1}
             docker push verdigristech/aws:${VERSION:-edge}
+            [ -n "${CIRCLE_TAG}"] && docker push verdigristech/aws:latest
 
 workflows:
   version: 2
