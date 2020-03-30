@@ -6,7 +6,7 @@ ENV AWSCLI_SIGNATURE_URL=${AWSCLI_URL}.sig
 COPY awspgp.pub /tmp/awspgp.pub
 
 RUN sed -i'' -e '/^path-exclude \/usr\/share\/groff\/\*/d' /etc/dpkg/dpkg.cfg.d/docker \
-  && apt-get update && apt-get install -y gnupg curl unzip groff-base less \
+  && apt-get update && apt-get install -y gnupg curl unzip groff-base less jq \
   && cd /tmp \
   && gpg --import awspgp.pub \
   && curl -o awscliv2.zip ${AWSCLI_URL} \
